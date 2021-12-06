@@ -1,3 +1,4 @@
+/** @type {import('webpack').Configuration}*/
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
@@ -23,8 +24,9 @@ module.exports = {
         exclude: '/node_modules/',
       },
       {
-        test: /.(css|sass|scss)$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        test: /\.css$/i,
+        include: path.resolve(__dirname, 'src'),
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)/,

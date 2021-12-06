@@ -1,3 +1,4 @@
+/** @type {import('webpack').Configuration}*/
 const path = require('path');
 
 module.exports = {
@@ -16,8 +17,9 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        use: ['style-loader', 'css-loader', 'sass-loader'],
-        test: /.(css|sass|scss)$/,
+        test: /\.css$/i,
+        include: path.resolve(__dirname, 'src'),
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
       {
         type: 'asset',

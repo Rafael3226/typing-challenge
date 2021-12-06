@@ -1,7 +1,17 @@
 import React from 'react';
+import './App.css';
+import NavBar from './components/NavBar.jsx';
+// import { useSelector, useDispatch } from 'react-redux';
+// import {
+//   decrement,
+//   increment,
+//   incrementByAmount,
+// } from '../src/redux/slices/counterSlice.js';
 
-function App() {
-  return <h1>Hola Mundo</h1>;
+export function App() {
+  // const count = useSelector((state) => state.counter.value);
+  // const dispatch = useDispatch();
+
+  return <NavBar />;
 }
-
 export default App;
