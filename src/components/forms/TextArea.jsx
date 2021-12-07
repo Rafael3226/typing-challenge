@@ -1,15 +1,18 @@
 import React from 'react';
 
 function TextArea({
-  label,
   placeholder,
+  className,
+  disabled,
+  label,
+  value,
   rows,
   id,
-  value,
+
   onChange = () => {},
 }) {
   return (
-    <>
+    <div className={className}>
       {label && (
         <label className="text-purple-500 font-light" htmlFor="text-area">
           {label}
@@ -18,12 +21,13 @@ function TextArea({
       <textarea
         className="w-full px-3 text-gray-700 border rounded-lg focus:outline-none focus-within:border-purple-500"
         placeholder={placeholder}
-        id={id}
-        rows={rows}
         onChange={onChange}
+        disabled={disabled}
         value={value}
+        rows={rows}
+        id={id}
       />
-    </>
+    </div>
   );
 }
 

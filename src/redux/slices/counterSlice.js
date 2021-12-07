@@ -3,8 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 export const counterSlice = createSlice({
   name: 'counter',
   initialState: {
+    running: false,
     text: '',
-    editable: '',
     writtenWords: 0,
     correctWords: 0,
     wrongWords: 0,
@@ -18,13 +18,17 @@ export const counterSlice = createSlice({
       state.correctWords = action.payload.correctWords;
       state.wrongWords = action.payload.wrongWords;
     },
-    setEditable: (state, action) => {
-      state.editable = action.payload.editable;
+    timerStart: (state) => {
+      state.running = true;
+    },
+    timerStop: (state) => {
+      state.running = false;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setText, setResults, setEditable } = counterSlice.actions;
+export const { setText, setResults, timerStart, timerStop } =
+  counterSlice.actions;
 
 export default counterSlice.reducer;

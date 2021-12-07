@@ -5,6 +5,7 @@ function Input({
   className,
   maxLength,
   onChange,
+  disabled,
   value,
   label,
   name,
@@ -21,6 +22,7 @@ function Input({
         placeholder={placeholder}
         maxLength={maxLength}
         onChange={onChange}
+        disabled={disabled}
         value={value}
         name={name}
         type={type}
