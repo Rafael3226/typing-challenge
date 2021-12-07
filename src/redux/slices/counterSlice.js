@@ -4,6 +4,7 @@ export const counterSlice = createSlice({
   name: 'counter',
   initialState: {
     text: '',
+    editable: '',
     writtenWords: 0,
     correctWords: 0,
     wrongWords: 0,
@@ -17,10 +18,13 @@ export const counterSlice = createSlice({
       state.correctWords = action.payload.correctWords;
       state.wrongWords = action.payload.wrongWords;
     },
+    setEditable: (state, action) => {
+      state.editable = action.payload.editable;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setText, setResults } = counterSlice.actions;
+export const { setText, setResults, setEditable } = counterSlice.actions;
 
 export default counterSlice.reducer;

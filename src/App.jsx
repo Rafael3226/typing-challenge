@@ -1,17 +1,26 @@
 import React from 'react';
 import './App.css';
 import NavBar from './components/NavBar.jsx';
-// import { useSelector, useDispatch } from 'react-redux';
-// import {
-//   decrement,
-//   increment,
-//   incrementByAmount,
-// } from '../src/redux/slices/counterSlice.js';
+import TextArea from './components/forms/TextArea.jsx';
+import Timer from './components/timer/Timer.jsx';
+import Container from './containers/Container.jsx';
 
 export function App() {
-  // const count = useSelector((state) => state.counter.value);
-  // const dispatch = useDispatch();
-
-  return <NavBar />;
+  return (
+    <>
+      <NavBar />
+      <Container>
+        <Timer />
+        <TextArea
+          label="Write here"
+          placeholder="Write here"
+          rows={5}
+          id="text-area"
+          value=""
+          onChange={() => {}}
+        />
+      </Container>
+    </>
+  );
 }
 export default App;

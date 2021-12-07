@@ -4,7 +4,5 @@ module.exports = {
   theme: {
     extend: {},
   },
-  variants: {
-    extend: {},
-  },
+  variants: { extend: {}, opacity: ({ after }) => after(['disabled']) },
 };
