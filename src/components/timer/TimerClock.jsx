@@ -5,9 +5,7 @@ function TimerClock({ minutes, seconds }) {
     <>
       <span className="text-6xl text-purple-600">
         {minutes < 10 ? '0' + minutes : minutes}
-      </span>
-      <span className="text-6xl text-purple-600">:</span>
-      <span className="text-6xl text-purple-600">
+        {':'}
         {seconds < 10 ? '0' + seconds : seconds}
       </span>
     </>

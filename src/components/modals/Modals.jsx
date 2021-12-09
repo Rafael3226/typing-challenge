@@ -1,6 +1,6 @@
 import React from 'react';
-import Paste from '../components/modals/Paste.jsx';
-import Results from '../components/modals/Results.jsx';
+import Paste from './Paste.jsx';
+import Results from './Results.jsx';
 
 function Modals() {
   return (

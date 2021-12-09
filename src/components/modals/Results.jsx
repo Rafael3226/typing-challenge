@@ -1,11 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import Button from '../forms/Button.jsx';
 import Circle from '../shapes/Circle.jsx';
 import CheckMark from '../shapes/CheckMark.jsx';
-import { PORTAL_ROOT } from '../../constants/constants.js';
-import Modal from '../Modal.jsx';
-import { useDispatch, useSelector } from 'react-redux';
+import Modal from '../../containers/Modal.jsx';
 import { modalResults } from '../../redux/slices/modalSlice.js';
 
 function Results() {
