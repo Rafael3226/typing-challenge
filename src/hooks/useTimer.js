@@ -1,60 +1,39 @@
-import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setTimer,
+  startTimer,
+  cleanTimer,
+  countTimer,
+  pauseTimer,
+} from '../redux/slices/timerSlice';
 
-function useTimer(minutes = 5) {
-  const [state, setState] = useState({
-    minutes,
-    seconds: 0,
-    running: false,
-  });
-  const setTime = (time) => {
-    setState((s) => {
-      return {
-        ...s,
-        minutes: time,
-        seconds: 0,
-        running: false,
-      };
-    });
+function useTimer() {
+  const { minutes, seconds, running, startMins, startSecs, paused, finalMins } =
+    useSelector((state) => state.timer);
+  const dispatch = useDispatch();
+
+  const setTime = (mins) => {
+    dispatch(setTimer({ minutes: mins }));
   };
   const start = () => {
-    setState((s) => {
-      const { running, minutes, seconds } = s;
-      if (!running && (minutes || seconds)) {
-        count();
-        return { ...s, running: true };
-      }
-      return s;
-    });
+    dispatch(startTimer());
+    count();
   };
   const clean = () => {
-    setState((s) => {
-      const { running } = s;
-      if (!running) {
-        return { ...s, minutes: 0, seconds: 0 };
-      }
-    });
+    if (!running) {
+      dispatch(cleanTimer());
+    }
   };
-  const stop = () => {
-    setState((s) => ({ ...s, running: false }));
+  const pause = () => {
+    dispatch(pauseTimer());
   };
   const count = () => {
-    setState((s) => {
-      let { minutes, seconds } = s;
-      if ((minutes !== 0 || seconds !== 0) && s.running) {
-        if (seconds === 0) {
-          minutes--;
-          seconds = 59;
-        } else {
-          seconds--;
-        }
-        setTimeout(() => {
-          count(minutes, seconds);
-        }, 1000);
-        return { ...s, minutes, seconds };
-      } else return { ...s, running: false };
-    });
+    dispatch(countTimer({ count }));
   };
-  return [state, { setTime, start, clean, stop }];
+  return [
+    { minutes, seconds, running, startMins, startSecs, paused, finalMins },
+    { setTime, start, clean, pause },
+  ];
 }
 
 export default useTimer;

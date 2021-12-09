@@ -1,9 +1,12 @@
 import React from 'react';
 
-function Paragraph({ className, text }) {
+function Paragraph({ checked, notChecked }) {
   return (
-    <div className={className}>
-      <p className="mx-4 my-2">{text}</p>
+    <div className="col-span-2 bg-gray-200 border rounded-lg">
+      <p className="mx-4 my-2 text-justify">
+        <span className="text-purple-500">{checked}</span>
+        <span>{notChecked}</span>
+      </p>
     </div>
   );
 }

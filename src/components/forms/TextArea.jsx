@@ -7,6 +7,7 @@ function TextArea({
   label,
   value,
   rows,
+  name,
   id,
 
   onChange = () => {},
@@ -25,6 +26,7 @@ function TextArea({
         disabled={disabled}
         value={value}
         rows={rows}
+        name={name}
         id={id}
       />
     </div>
