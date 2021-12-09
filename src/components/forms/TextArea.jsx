@@ -8,8 +8,8 @@ function TextArea({
   value,
   rows,
   name,
+  role,
   id,
-
   onChange = () => {},
 }) {
   return (
@@ -27,6 +27,7 @@ function TextArea({
         value={value}
         rows={rows}
         name={name}
+        role={role}
         id={id}
       />
     </div>

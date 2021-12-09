@@ -39,7 +39,6 @@ function Home() {
         writtenWords: input.length,
         correctWords: points,
         wrongWords: input.length - points,
-        wordsByMinute: input.length / finalMins,
       })
     );
     dispatch(modalResults(true));
@@ -70,6 +69,7 @@ function Home() {
         value={text}
         onChange={handleText}
         disabled={!running}
+        role="write-area"
         selected={true}
       />
       <div className="flex justify-end">

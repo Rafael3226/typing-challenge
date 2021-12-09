@@ -41,10 +41,11 @@ function Paste() {
               id="paste-area"
               value={state.input}
               onChange={handleChange}
+              role="paste-area"
             />
           </div>
           <div className="grid grid-cols-2 gap-2">
-            <Button value="Paste" onClick={handlePaste} />
+            <Button value="Save" onClick={handlePaste} />
             <Button value="Close" onClick={handleClose} />
           </div>
         </div>

@@ -8,8 +8,9 @@ import { modalResults } from '../../redux/slices/modalSlice.js';
 
 function Results() {
   const {
-    counter: { writtenWords, correctWords, wrongWords, wordsByMinute },
+    counter: { writtenWords, correctWords, wrongWords },
     modal: { modalResults: open },
+    timer: { finalMins },
   } = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -27,15 +28,17 @@ function Results() {
             Results
           </h3>
           <div className="mt-2 px-7 py-3">
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-gray-500" role="res-written">
               Written words : {writtenWords}
             </p>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-gray-500" role="res-correct">
               Correct words : {correctWords}
             </p>
-            <p className="text-sm text-gray-500">Wrong words : {wrongWords}</p>
-            <p className="text-sm text-gray-500">
-              Words by minute : {wordsByMinute}
+            <p className="text-sm text-gray-500" role="res-wrong">
+              Wrong words : {wrongWords}
+            </p>
+            <p className="text-sm text-gray-500" role="res-by-minute">
+              Words by minute : {!finalMins ? 0 : writtenWords / finalMins}
             </p>
           </div>
           <Button value="Close" onClick={handleClose}></Button>
