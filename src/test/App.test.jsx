@@ -19,7 +19,7 @@ const provide = (children) => {
 
 test('paste text', async () => {
   const app = provide(<App />);
-  fireEvent.click(screen.getByText('Paste'));
+  fireEvent.click(screen.getByText('+'));
   const text = app.getByRole('paste-area', { id: 'paste-area' });
   fireEvent.change(text, { target: { value: texts[1] } });
   fireEvent.click(screen.getByText('Save'));

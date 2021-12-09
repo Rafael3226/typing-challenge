@@ -52,7 +52,7 @@ function Home() {
   return (
     <>
       <div className="grid grid-cols-4 gap-2 my-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12">
-        <Button value="Paste" onClick={handlePaste} />
+        <Button value="+" onClick={handlePaste} />
         {texts.map((text, key) => (
           <Button key={key} value={key + 1} onClick={() => handleGuide(text)} />
         ))}
