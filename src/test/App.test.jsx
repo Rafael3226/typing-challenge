@@ -54,7 +54,6 @@ test('write text', async () => {
   // write
   const text = app.getByRole('write-area', { id: 'write-area' });
   fireEvent.change(text, { target: { value: texts[0].slice(0, 15) } });
-
   // end
   fireEvent.click(screen.getByText('Pause'));
   // rate
@@ -67,4 +66,7 @@ test('write text', async () => {
     'Correct words : 3'
   );
   expect(screen.getByRole('res-wrong')).toHaveTextContent('Wrong words : 0');
+  expect(screen.getByRole('res-by-minute')).toHaveTextContent(
+    'Words by minute : 0'
+  );
 });
