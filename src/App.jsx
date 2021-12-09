@@ -3,8 +3,9 @@ import NavBar from './components/NavBar.jsx';
 import Container from './containers/Container.jsx';
 import Home from './pages/Home.jsx';
 import './App.css';
-import Results from './pages/Results.jsx';
-import Paste from './pages/Paste.jsx';
+import Results from './components/modals/Results.jsx';
+import Paste from './components/modals/Paste.jsx';
+import Modals from './pages/Modals.jsx';
 
 export function App() {
   return (
@@ -13,8 +14,7 @@ export function App() {
       <Container>
         <Home />
       </Container>
-      <Results />
-      <Paste />
+      <Modals />
     </>
   );
 }

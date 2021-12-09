@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Button from '../components/forms/Button.jsx';
-import TextArea from '../components/forms/TextArea.jsx';
-import Modal from '../components/Modal.jsx';
-import CheckMark from '../components/shapes/CheckMark.jsx';
-import Circle from '../components/shapes/Circle.jsx';
-import { setGuide } from '../redux/slices/counterSlice.js';
-import { modalPaste } from '../redux/slices/modalSlice.js';
+import Button from '../forms/Button.jsx';
+import TextArea from '../forms/TextArea.jsx';
+import Modal from '../Modal.jsx';
+import CheckMark from '../shapes/CheckMark.jsx';
+import Circle from '../shapes/Circle.jsx';
+import { setGuide } from '../../redux/slices/counterSlice.js';
+import { modalPaste } from '../../redux/slices/modalSlice.js';
+import { PORTAL_ROOT } from '../../constants/constants.js';
 
 function Paste() {
   const { modalPaste: open } = useSelector((state) => state.modal);

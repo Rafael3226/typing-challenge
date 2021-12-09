@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Button from '../components/forms/Button.jsx';
-import Circle from '../components/shapes/Circle.jsx';
-import CheckMark from '../components/shapes/CheckMark.jsx';
-import { PORTAL_ROOT } from '../constants/constants.js';
-import Modal from '../components/Modal.jsx';
+import Button from '../forms/Button.jsx';
+import Circle from '../shapes/Circle.jsx';
+import CheckMark from '../shapes/CheckMark.jsx';
+import { PORTAL_ROOT } from '../../constants/constants.js';
+import Modal from '../Modal.jsx';
 import { useDispatch, useSelector } from 'react-redux';
-import { modalResults } from '../redux/slices/modalSlice.js';
+import { modalResults } from '../../redux/slices/modalSlice.js';
 
 function Results() {
   const {
@@ -18,7 +18,7 @@ function Results() {
   const handleClose = () => {
     dispatch(modalResults(false));
   };
-  return ReactDOM.createPortal(
+  return (
     open && (
       <Modal>
         <div className="mt-3 text-center">
@@ -43,8 +43,7 @@ function Results() {
           <Button value="Close" onClick={handleClose}></Button>
         </div>
       </Modal>
-    ),
-    document.getElementById(PORTAL_ROOT)
+    )
   );
 }
 
