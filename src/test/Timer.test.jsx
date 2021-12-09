@@ -47,15 +47,3 @@ test('start timer', async () => {
     '00:58'
   );
 });
-test('pause timer', async () => {
-  const component = provide(<Timer />);
-  const input = component.getByRole('input', { id: 'mins-input' });
-  fireEvent.change(input, { target: { value: '1' } });
-  fireEvent.click(screen.getByText('Set time'));
-  fireEvent.click(screen.getByText('Start'));
-  fireEvent.click(screen.getByText('Pause'));
-  await wait(1100);
-  expect(screen.getByRole('timer', { id: 'timer-clock' })).toHaveTextContent(
-    '00:59'
-  );
-});
