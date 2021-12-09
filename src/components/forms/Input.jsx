@@ -10,6 +10,7 @@ function Input({
   label,
   name,
   type,
+  id,
   color = 'purple',
 }) {
   return (
@@ -26,6 +27,8 @@ function Input({
         value={value}
         name={name}
         type={type}
+        id={id}
+        role="input"
       />
     </div>
   );

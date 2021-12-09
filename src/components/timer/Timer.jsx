@@ -51,6 +51,7 @@ function Timer() {
           type="number"
           maxLength={2}
           disabled={running}
+          id="mins-input"
         />
       </div>
       <div className="grid grid-cols-4  justify-center  gap-4">

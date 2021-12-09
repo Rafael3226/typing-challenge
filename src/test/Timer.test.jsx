@@ -1,29 +1,50 @@
 // __tests__/fetch.test.js
 import React from 'react';
-import { render, fireEvent, waitFor, screen } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import store from '../redux/store';
 import Timer from '../components/timer/Timer';
 
-beforeAll(() => {});
-afterEach(() => {});
-afterAll(() => {});
+// beforeAll(() => {});
+// afterEach(() => {});
+// afterAll(() => {});
+const wait = (time) =>
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, time);
+  });
+const provide = (children) => {
+  return render(<Provider store={store}>{children}</Provider>);
+};
 
-// test('count timer', async () => {
-//   render(<Timer />);
-//   fireEvent.change(input, { target: { value: '20' } });
-//   screen.getByRole('textarea', {});
-//   fireEvent.click(screen.getByText('Start'));
-
-//   await waitFor(() => screen.getByRole('heading'));
-
-//   expect(screen.getByRole('heading')).toHaveTextContent('hello there');
-//   expect(screen.getByRole('button')).toBeDisabled();
-// });
 test('set timer', async () => {
-  const component = render(<Timer />);
-  const textArea = component.getByRole('textarea', { id: 'text-area' });
-  fireEvent.change(textArea, { target: { value: '20' } });
-  fireEvent.fireEvent.click(screen.getByText('Set time'));
+  const component = provide(<Timer />);
+  const input = component.getByRole('input', { id: 'mins-input' });
+  fireEvent.change(input, { target: { value: '20' } });
+  fireEvent.click(screen.getByText('Set time'));
+  expect(screen.getByRole('timer', { id: 'timer-clock' })).toHaveTextContent(
+    '20:00'
+  );
+});
+test('clean timer', async () => {
+  provide(<Timer />);
+  fireEvent.click(screen.getByText('Clean'));
+  expect(screen.getByRole('timer', { id: 'timer-clock' })).toHaveTextContent(
+    '00:00'
+  );
+});
+test('start timer', async () => {
+  const component = provide(<Timer />);
+  const input = component.getByRole('input', { id: 'mins-input' });
+  fireEvent.change(input, { target: { value: '1' } });
+  fireEvent.click(screen.getByText('Set time'));
+  fireEvent.click(screen.getByText('Start'));
 
-  expect(screen.getByRole('span')).toHaveTextContent('20:00');
+  await wait(1100);
+  fireEvent.click(screen.getByText('Pause'));
+  expect(screen.getByRole('timer', { id: 'timer-clock' })).toHaveTextContent(
+    '00:58'
+  );
 });
