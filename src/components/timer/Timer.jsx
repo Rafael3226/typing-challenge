@@ -6,7 +6,7 @@ import useTimer from '../../hooks/useTimer.js';
 import { setText } from '../../redux/slices/counterSlice.js';
 import { useDispatch } from 'react-redux';
 
-function Timer() {
+function Timer({ className }) {
   const [{ input }, setState] = useState({ input: '' });
   const [{ minutes, seconds, running }, tm] = useTimer();
   const dispatch = useDispatch();
@@ -40,48 +40,50 @@ function Timer() {
   };
 
   return (
-    <div>
-      <div className="flex justify-center mt-8">
-        <TimerClock minutes={minutes} seconds={seconds} />
-      </div>
-      <div className="flex justify-center">
-        <Input
-          onChange={handleInput}
-          value={input}
-          type="number"
-          maxLength={2}
-          disabled={running}
-          id="mins-input"
-        />
-      </div>
-      <div className="grid grid-cols-4  justify-center  gap-4">
-        <Button
-          type="button"
-          value="Set time"
-          onClick={setTime}
-          disabled={running}
-        />
-        <Button
-          className=""
-          type="button"
-          value="Start"
-          onClick={start}
-          disabled={running}
-        />
-        <Button
-          className=""
-          type="button"
-          value="Pause"
-          onClick={pause}
-          disabled={!running}
-        />
-        <Button
-          className=""
-          type="button"
-          value="Clean"
-          onClick={clean}
-          disabled={running}
-        />
+    <div className={`${className} flex justify-center`}>
+      <div>
+        <div className="flex justify-center">
+          <TimerClock minutes={minutes} seconds={seconds} />
+        </div>
+        <div className="flex justify-center">
+          <Input
+            onChange={handleInput}
+            value={input}
+            type="number"
+            maxLength={2}
+            disabled={running}
+            id="mins-input"
+          />
+        </div>
+        <div className="grid grid-cols-2  justify-center  gap-4 lg:grid-cols-4">
+          <Button
+            type="button"
+            value="Set time"
+            onClick={setTime}
+            disabled={running}
+          />
+          <Button
+            className=""
+            type="button"
+            value="Start"
+            onClick={start}
+            disabled={running}
+          />
+          <Button
+            className=""
+            type="button"
+            value="Pause"
+            onClick={pause}
+            disabled={!running}
+          />
+          <Button
+            className=""
+            type="button"
+            value="Clean"
+            onClick={clean}
+            disabled={running}
+          />
+        </div>
       </div>
     </div>
   );
